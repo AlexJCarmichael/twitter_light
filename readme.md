@@ -1,0 +1,1 @@
+All photos used in the planning of this app can be found in /app/assets.images.

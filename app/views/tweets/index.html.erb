@@ -1,2 +1,15 @@
-<h1>Tweets#index</h1>
-<p>Find me in app/views/tweets/index.html.erb</p>
+<h1>All those tweets!</h1>
+
+<% @tweets.each do |tweet| %>
+  <div class="tweet-holder">
+    <a class="show-user" href="users/<%= tweet.user.id %>"> <%= tweet.user.handle %> </a> <a class="show-tweet" href="tweets/<%= tweet.id %>"> <%= tweet.body %> </a>
+  </div>
+<% end %>
+
+<% if @page.to_i >= 1 %>
+  <a class="page-link" href="tweets?page=<%=@page.to_i-1%>">Previous Page</a>
+<% end %>
+<% limiter = @page.to_i*25 %>
+<% if limiter <= Tweet.all.count %>
+  <a class="page-link" href="tweets?page=<%=@page.to_i+1%>">Next Page</a>
+<% end %>
